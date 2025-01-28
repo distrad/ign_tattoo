@@ -1,0 +1,24 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.jsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "components/clientReview.tsx",
+    "components/Texted.js",
+    "app/**/*.{ts,tsx,jsx}",
+    "app/(tabs)/search.tsx",
+    "app/(auth)/register.tsx",
+    "/app/(auth)/**/*.{js,jsx,ts,tsx}",
+    "app/context/userContext.js",
+    "components/simpleMenu.js"
+  ]
+}
