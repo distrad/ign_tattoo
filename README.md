@@ -1,135 +1,139 @@
-
----
-
 # IgnTattoo - Social Platform for Tattoo Artists & Designers 🎨⚡
 
-**IgnTattoo** es una **plataforma social móvil** diseñada exclusivamente para tatuadores y diseñadores de tatuajes. Permite a los artistas mostrar su trabajo, conectarse con clientes, gestionar citas y colaborar en proyectos. Desarrollada con tecnologías modernas como **React Native**, **Expo**, **Express.js** y **PostgreSQL**, ofrece una experiencia fluida y profesional.
-
-
-
+**IgnTattoo** is a **mobile social platform** designed exclusively for tattoo artists and tattoo designers. It allows artists to showcase their work, connect with clients, manage appointments, and collaborate on projects. Built with modern technologies like **React Native**, **Expo**, **Express.js**, and **PostgreSQL**, it offers a seamless and professional experience.
 
 ---
 
-## ✨ Características Principales
-- **Portafolio de Artistas**: Subida de imágenes de alta calidad con metadatos específicos (estilo, ubicación en el cuerpo, tipo de tinta).
-- **Descubrimiento de Artistas**: Búsqueda por ubicación, estilo (#Tradicional, #Acuarela, #Blackwork) y disponibilidad.
-- **Interacción Social**: Sistema de likes, comentarios y mensajes directos entre usuarios.
-- **Gestión de Citas**: Agendamiento de citas, recordatorios y seguimiento de estado.
-- **Proyectos Colaborativos**: Espacios para diseñadores y tatuadores para colaborar en proyectos personalizados.
-- **Autenticación Segura**: JWT con roles de usuario (artista/cliente).
+## ✨ Key Features
+
+- **Artist Portfolio**: High-quality image uploads with specific metadata (style, body placement, ink type).
+- **Artist Discovery**: Search by location, style (#Traditional, #Watercolor, #Blackwork), and availability.
+- **Social Interaction**: Like, comment, and direct messaging system between users.
+- **Appointment Management**: Schedule appointments, reminders, and status tracking.
+- **Collaborative Projects**: Spaces for designers and tattoo artists to collaborate on custom projects.
+- **Secure Authentication**: JWT with user roles (artist/client).
 
 ---
 
-## 🛠 Tecnologías Utilizadas
-**Frontend**:  
-- **React Native (Expo SDK)**: Desarrollo multiplataforma.
-- **NativeWind**: Estilos con enfoque utility-first.
-- **Reanimated/GestureHandler**: Animaciones fluidas.
-- **Image Picker/Camera**: Manejo de imágenes y fotos.
+## 🛠 Technologies Used
 
-**Backend**:  
-- **Node.js + Express**: API RESTful.
-- **PostgreSQL**: Base de datos relacional.
-- **Cloudinary** (opcional): Almacenamiento de imágenes.
-- **JWT**: Autenticación y autorización.
+**Frontend**:
 
-**DevOps**:  
+- **React Native (Expo SDK)**: Cross-platform development.
+- **NativeWind**: Utility-first styling.
+- **Reanimated/GestureHandler**: Smooth animations.
+- **Image Picker/Camera**: Image and photo handling.
+
+**Backend**:
+
+- **Node.js + Express**: RESTful API.
+- **PostgreSQL**: Relational database.
+- **JWT**: Authentication and authorization.
+
+**DevOps**:
+
 - **GitHub Actions**: CI/CD Pipeline.
-- **Expo Application Services**: Actualizaciones OTA.
-- **Docker** (opcional): Contenerización.
+- **Expo Application Services**: OTA updates.
+- **Docker** (optional): Containerization.
 
 ---
 
-## 🚀 Instalación
+## 🚀 Installation
 
-### 1. Clonar el repositorio
+### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/bealed0n/Capstone.git
+git clone https://github.com/bealed0n/ign_tattoo.git
 cd Capstone
 ```
 
-### 2. Instalar dependencias
+### 2. Install Dependencies
 
 #### Backend
-1. Navega a la carpeta del backend:
+
+1. Navigate to the backend folder:
    ```bash
    cd backend-ign-tattoo-app
    ```
-2. Instala las dependencias:
+2. Install dependencies:
    ```bash
    npm install
    ```
-3. Inicia el servidor de desarrollo:
+3. Start the development server:
    ```bash
    npm run dev
    ```
 
 #### Frontend
-1. Navega a la carpeta del frontend:
+
+1. Navigate to the frontend folder:
    ```bash
    cd ../frontend-ign-tattoo-app
    ```
-2. Instala las dependencias:
+2. Install dependencies:
    ```bash
    npm install
    ```
-3. Inicia el proyecto Expo:
+3. Start the Expo project:
    ```bash
    npx expo start
    ```
 
 ---
 
-## 🗃️ Estructura de la Base de Datos (PostgreSQL)
+## 🗃️ Database Structure (PostgreSQL)
 
-El proyecto utiliza **PostgreSQL** como base de datos. A continuación, se detallan las tablas principales:
+The project uses **PostgreSQL** as its database. Below are the main tables:
 
-### 1. Usuarios (`users`)
-| Columna     | Tipo         | Descripción                           |
-| ----------- | ------------ | ------------------------------------- |
-| id          | SERIAL       | Identificador único del usuario       |
-| username    | VARCHAR(50)  | Nombre de usuario                     |
-| email       | VARCHAR(100) | Correo electrónico del usuario        |
-| password    | VARCHAR(255) | Contraseña cifrada                    |
-| bio         | TEXT         | Descripción del usuario               |
-| profile_pic | VARCHAR(255) | URL de la imagen de perfil            |
-| created_at  | TIMESTAMP    | Fecha de creación de la cuenta        |
-| role        | VARCHAR(50)  | Rol del usuario (por ejemplo, 'user') |
+### 1. Users (`users`)
 
-### 2. Citas (`appointments`)
-| Columna             | Tipo        | Descripción                                |
-| ------------------- | ----------- | ------------------------------------------ |
-| id                  | SERIAL      | Identificador único de la cita             |
-| user_id             | INTEGER     | ID del usuario que agenda la cita          |
-| tattoo_artist_id    | INTEGER     | ID del tatuador                            |
-| date                | DATE        | Fecha de la cita                           |
-| time                | TIME        | Hora de la cita                            |
-| description         | TEXT        | Descripción de la cita                     |
-| status              | VARCHAR(20) | Estado de la cita (por ejemplo, 'pending') |
-| reference_image_url | TEXT        | URL de la imagen de referencia             |
+| Column      | Type         | Description              |
+| ----------- | ------------ | ------------------------ |
+| id          | SERIAL       | Unique user identifier   |
+| username    | VARCHAR(50)  | Username                 |
+| email       | VARCHAR(100) | User email               |
+| password    | VARCHAR(255) | Encrypted password       |
+| bio         | TEXT         | User description         |
+| profile_pic | VARCHAR(255) | Profile picture URL      |
+| created_at  | TIMESTAMP    | Account creation date    |
+| role        | VARCHAR(50)  | User role (e.g., 'user') |
 
-### 3. Proyectos de Diseño (`designer_projects`)
-| Columna      | Tipo          | Descripción                              |
-| ------------ | ------------- | ---------------------------------------- |
-| id           | SERIAL        | Identificador único del proyecto         |
-| designer_id  | INTEGER       | ID del diseñador                         |
-| title        | VARCHAR(255)  | Título del proyecto                      |
-| description  | TEXT          | Descripción del proyecto                 |
-| image        | VARCHAR(255)  | URL de la imagen del proyecto            |
-| price        | DECIMAL(10,2) | Precio del proyecto                      |
-| created_at   | TIMESTAMP     | Fecha de creación del proyecto           |
-| currency     | VARCHAR(10)   | Moneda del precio                        |
-| is_available | BOOLEAN       | Indica si el proyecto está disponible    |
+### 2. Appointments (`appointments`)
+
+| Column              | Type        | Description                            |
+| ------------------- | ----------- | -------------------------------------- |
+| id                  | SERIAL      | Unique appointment identifier          |
+| user_id             | INTEGER     | ID of the user booking the appointment |
+| tattoo_artist_id    | INTEGER     | ID of the tattoo artist                |
+| date                | DATE        | Appointment date                       |
+| time                | TIME        | Appointment time                       |
+| description         | TEXT        | Appointment description                |
+| status              | VARCHAR(20) | Appointment status (e.g., 'pending')   |
+| reference_image_url | TEXT        | Reference image URL                    |
+
+### 3. Designer Projects (`designer_projects`)
+
+| Column       | Type          | Description                           |
+| ------------ | ------------- | ------------------------------------- |
+| id           | SERIAL        | Unique project identifier             |
+| designer_id  | INTEGER       | ID of the designer                    |
+| title        | VARCHAR(255)  | Project title                         |
+| description  | TEXT          | Project description                   |
+| image        | VARCHAR(255)  | Project image URL                     |
+| price        | DECIMAL(10,2) | Project price                         |
+| created_at   | TIMESTAMP     | Project creation date                 |
+| currency     | VARCHAR(10)   | Price currency                        |
+| is_available | BOOLEAN       | Indicates if the project is available |
 
 ---
 
+## Project Structure
 
-## Estructura del Proyecto
 ```
 Capstone/
 │
-├── backend-ign-tattoo-app/     # Código del servidor (Express.js)
-├── frontend-ign-tattoo-app/    # Código del cliente (React Native)
+├── backend-ign-tattoo-app/     # Server code (Express.js)
+├── frontend-ign-tattoo-app/    # Client code (React Native)
 │
-└── README.md                   # Documentación del proyecto
+└── README.md                   # Project documentation
 ```
