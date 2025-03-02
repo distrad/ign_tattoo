@@ -28,7 +28,6 @@
 
 - **Node.js + Express**: RESTful API.
 - **PostgreSQL**: Relational database.
-- **JWT**: Authentication and authorization.
 
 **DevOps**:
 
